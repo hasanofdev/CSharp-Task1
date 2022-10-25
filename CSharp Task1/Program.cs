@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-
+using System.Text;
 
 class Program
 {
@@ -86,8 +85,7 @@ class Program
         };
         //2) rhyta.com ve ya dayrep.com domenlerinde emaili olan borclulari cixartmag
         {
-            //debtors.FindAll((debtor) => debtor.Email.EndsWith("rhyta.com")).ForEach((debtor) => Console.WriteLine(debtor));
-            //debtors.FindAll((debtor) => debtor.Email.EndsWith("dayrep.com")).ForEach((debtor) => Console.WriteLine(debtor));
+            //debtors.FindAll((debtor) => debtor.Email.EndsWith("rhyta.com") || debtor.Email.EndsWith("dayrep.com")).ForEach((debtor) => Console.WriteLine(debtor)); //debtors.FindAll((debtor) => .ForEach((debtor) => Console.WriteLine(debtor));
         }
         //3) Yashi 26 - dan 36 - ya qeder olan borclulari cixartmag
         {
@@ -107,40 +105,101 @@ class Program
         }
         //8) Borcu, umumi borclarin orta borcunnan cox olan borclulari cixarmaq ve evvel familyaya gore sonra ise meblegin azalmagina gore sortirovka etmek
         {
-            int totalDebt = 0;
-            debtors.ForEach((debtor) =>totalDebt += debtor.Debt);
-            int averageDebt = totalDebt / debtors.Count;
-            
-            List<Debtor> a = debtors.FindAll((debtor) => debtor.Debt > averageDebt);
-
-            debtors.Sort((Debtor d1, Debtor d2) => d1.FullName.CompareTo();
-
-            a.ForEach((debtor) => Console.WriteLine(debtor));
+            //int totalDebt = 0;
+            //debtors.ForEach((debtor) => totalDebt += debtor.Debt);
+            //
+            //List<Debtor> a = debtors.FindAll((debtor) => debtor.Debt > totalDebt / debtors.Count);
+            //
+            //int endIndex = debtors[0].FullName.LastIndexOf(' ');
+            //
+            //a.Sort((Debtor d1, Debtor d2) => d1.FullName.CompareTo(d2.FullName));
+            //
+            //a.Sort((Debtor d1, Debtor d2) => d1.Debt.CompareTo(d2.Debt));
+            //
+            //a.ForEach((debtor) => Console.WriteLine(debtor));
         }
         //9) Telefon nomresinde 8 olmayan borclularin yalniz familyasin, yashin ve umumi borcun meblegin cixarmaq
-        //
-        //
+        {
+            //debtors.FindAll((debtor) =>debtor.Phone.Count((chr) => chr == '8') == 0)
+            //    .ForEach((debtor) => Console.WriteLine($"{debtor.FullName.Split(' ')[2]}  {DateTime.Today.Year - debtor.BirthDay.Year} {debtor.Debt}"));
+        }
         //11)Adinda ve familyasinda hec olmasa 3 eyni herf olan borclularin siyahisin cixarmaq ve onlari elifba sirasina gore sortirovka elemek
-        //
-        //
+        {
+            //int count;
+            //char symbol;
+            //var a = debtors.FindAll(debtor =>
+            //{
+            //    int count;
+            //    char symbol;
+            //    for (int i = 0; i < debtor.FullName.Length; i++)
+            //    {
+            //        count = 0;
+            //        symbol = debtor.FullName[i];
+            //        for (int j = 0; j < debtor.FullName.Length; j++)
+            //            if (symbol == debtor.FullName[j])
+            //                count++;
+            //        if (count >= 3)
+            //            return true;
+            //    }
+            //    return false;
+            //});
+            //a.Sort((Debtor d1, Debtor d2) => d1.FullName.CompareTo(d2.FullName));
+            //
+            //a.ForEach(debtor => Console.WriteLine(debtor));
+        }
         //13)borclulardan en coxu hansi ilde dogulubsa hemin ili cixartmaq
-        //
-        //
+        {
+            //int temp = 0;
+            //int YearsCount = 0;
+            //int max = 0;
+            //int best = 0;
+            //
+            //for (int i = 0; i < debtors.Count; i++)
+            //{
+            //    temp = debtors[i].BirthDay.Year;
+            //
+            //    YearsCount = debtors.Count(d => d.BirthDay.Year == temp);
+            //
+            //    if (YearsCount > max)
+            //    {
+            //        max = YearsCount;
+            //        best = temp;
+            //    }
+            //}
+            //Console.WriteLine(best);
+        }
         //14)Borcu en boyuk olan 5 borclunun siyahisini cixartmaq
-        //
-        //
+        {
+            //debtors.OrderByDescending(debtor => debtor.Debt).Take(5).ToList().ForEach(debtor => Console.WriteLine(debtor));
+        }
         //15)Butun borcu olanlarin borcunu cemleyib umumi borcu cixartmaq
-        //
-        //
-        //16)2ci dunya muharibesin gormush borclularin siyahisi cixartmaq
-        //
-        //
-        //18)Nomresinde tekrar reqemler olmayan borclularin ve onlarin borcunun meblegin cixartmaq
-        //
-        //
-        //19)Tesevvur edek ki,butun borclari olanlar bugunden etibaren her ay 500 azn pul odeyecekler.Oz ad gunune kimi borcun oduyub qurtara bilenlerin siyahisin cixartmaq
-        //
-        //
+        {
+            Console.WriteLine(debtors.Sum(debtor => debtor.Debt));
+        }
+        //16)2ci dunya muharibesin gormush borclularin siyahisi cixartmaqdebtors
+        {
+            //debtors.FindAll(debtor => debtor.BirthDay.Year <= 1945).ToList().ForEach(debtor => Console.WriteLine(debtor));
+        }
         //20)Adindaki ve familyasindaki herflerden "smile" sozunu yaza bileceyimiz borclularin siyahisini cixartmaq
+        {
+
+            debtors.FindAll(d =>
+            {
+                string str1 = "smile";
+                StringBuilder str2 = new();
+            
+                for (int i = 0; i < str1.Length; i++)
+                {
+                    if (d.FullName.ToLower().Contains(str1[i]))
+                    {
+                        str2.Append(str1[i]);
+                        continue;
+                    }
+                    break;
+                }
+            
+                return str2.ToString() == str1;
+            }).ForEach(d => Console.WriteLine(d));
+        }
     }
 }
